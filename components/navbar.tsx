@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -56,11 +57,17 @@ export function Navbar() {
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-0.5">
-            <span className={`text-xl font-bold tracking-tight transition-colors ${isScrolled ? "text-[#3F1C66]" : "text-white"}`}>
-              Libris
-            </span>
-            <span className="text-[#B12166] text-xl">.</span>
+          <Link href="/" className="flex items-center gap-0.5 h-8 transition-all duration-300">
+            <div className={`transition-all duration-300 ${isScrolled ? "filter-none" : "brightness-0 invert"}`}>
+              <Image
+                src="/logo.svg"
+                alt="Libris"
+                width={120}
+                height={32}
+                priority
+                className="h-8 w-auto"
+              />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -234,11 +241,15 @@ export function Navbar() {
           >
             <div className="flex flex-col h-full">
               <div className="flex items-center justify-between p-4 border-b border-gray-200">
-                <Link href="/" className="flex items-center gap-0.5">
-                  <span className="text-xl font-bold text-[#3F1C66] tracking-tight">
-                    Libris
-                  </span>
-                  <span className="text-[#B12166] text-xl">.</span>
+                <Link href="/" className="flex items-center gap-0.5 h-8">
+                  <Image
+                    src="/logo.svg"
+                    alt="Libris"
+                    width={120}
+                    height={32}
+                    priority
+                    className="h-8 w-auto"
+                  />
                 </Link>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
