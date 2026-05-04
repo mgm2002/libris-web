@@ -1,0 +1,251 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Libris Brand Colors */
+  --brand-primary: #3F1C66;
+  --brand-accent: #B12166;
+  --brand-gradient: linear-gradient(135deg, #3F1C66 0%, #B12166 100%);
+
+  /* Extended palette */
+  --brand-orange: #E07B39;
+  --brand-green: #16A085;
+  --brand-dark: #1A0E2E;
+
+  /* Backgrounds */
+  --bg-base: #FFFFFF;
+  --bg-subtle: #FAF8FC;
+  --bg-elevated: #FFFFFF;
+  --bg-dark: #1A0E2E;
+
+  /* Text */
+  --text-primary: #1A0E2E;
+  --text-secondary: #5C5470;
+  --text-muted: #8B85A0;
+
+  /* Borders */
+  --border-subtle: #EDE9F2;
+  --border-default: #DCD5E5;
+
+  /* Status */
+  --success: #16A085;
+  --warning: #E0A82E;
+
+  /* shadcn tokens mapped to Libris */
+  --background: #FFFFFF;
+  --foreground: #1A0E2E;
+  --card: #FFFFFF;
+  --card-foreground: #1A0E2E;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A0E2E;
+  --primary: #3F1C66;
+  --primary-foreground: #FFFFFF;
+  --secondary: #FAF8FC;
+  --secondary-foreground: #1A0E2E;
+  --muted: #FAF8FC;
+  --muted-foreground: #8B85A0;
+  --accent: #B12166;
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: #EDE9F2;
+  --input: #DCD5E5;
+  --ring: #3F1C66;
+  --radius: 1rem;
+
+  /* Chart colors */
+  --chart-1: #3F1C66;
+  --chart-2: #B12166;
+  --chart-3: #16A085;
+  --chart-4: #E0A82E;
+  --chart-5: #5C5470;
+}
+
+@theme inline {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  /* Custom Libris colors for Tailwind */
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-green: var(--brand-green);
+  --color-brand-dark: var(--brand-dark);
+  --color-bg-base: var(--bg-base);
+  --color-bg-subtle: var(--bg-subtle);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-dark: var(--bg-dark);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-default: var(--border-default);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient button */
+.btn-gradient {
+  background: var(--brand-gradient);
+  color: white;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.btn-gradient:hover {
+  opacity: 0.9;
+}
+
+/* Animated gradient background */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animated-gradient {
+  background: linear-gradient(135deg, #3F1C66 0%, #B12166 50%, #3F1C66 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Dot pattern background */
+.dot-pattern {
+  background-image: radial-gradient(circle, var(--brand-primary) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Grid pattern background */
+.grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(63, 28, 102, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(63, 28, 102, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* Section heading underline */
+.heading-underline::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--brand-gradient);
+  margin-top: 12px;
+}
+
+.heading-underline-center::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Pulse animation for live badge */
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Card hover lift */
+.card-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px rgba(63, 28, 102, 0.15);
+}
+
+/* Gradient border */
+.gradient-border {
+  position: relative;
+  background: white;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: var(--brand-gradient);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
