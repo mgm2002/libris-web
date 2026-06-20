@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion"
 import { ArrowRight, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { GradientText } from "@/components/primitives/gradient-text"
-import DashboardMock from "@/components/mockups/dashboard-mock"
+import { DashboardMock } from "@/components/mockups/dashboard-mock"
 
 const BASE_DELAY = 0.08
 

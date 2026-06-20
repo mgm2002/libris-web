@@ -16,9 +16,10 @@ import {
 import { motion, AnimatePresence } from "framer-motion"
 import { NAV_LINKS } from "@/lib/constants"
 
-export function Navbar() {
+export function Navbar({ heroVariant = "dark" }: { heroVariant?: "light" | "dark" }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const useDarkText = isScrolled || heroVariant === "light"
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,7 +48,7 @@ export function Navbar() {
               height={32}
               priority
               className={`h-8 w-auto transition-all duration-250 ${
-                isScrolled ? "" : "brightness-0 invert"
+                useDarkText ? "" : "brightness-0 invert"
               }`}
             />
           </Link>
@@ -60,7 +61,7 @@ export function Navbar() {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger
                     className={`bg-transparent text-sm font-medium transition-colors ${
-                      isScrolled
+                      useDarkText
                         ? "text-text-secondary hover:text-text-primary hover:bg-bg-subtle"
                         : "text-white/80 hover:text-white hover:bg-white/10"
                     }`}
@@ -90,7 +91,7 @@ export function Navbar() {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger
                     className={`bg-transparent text-sm font-medium transition-colors ${
-                      isScrolled
+                      useDarkText
                         ? "text-text-secondary hover:text-text-primary hover:bg-bg-subtle"
                         : "text-white/80 hover:text-white hover:bg-white/10"
                     }`}
@@ -122,7 +123,7 @@ export function Navbar() {
                     <Link
                       href="/precios"
                       className={`inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors ${
-                        isScrolled
+                        useDarkText
                           ? "text-text-secondary hover:text-text-primary hover:bg-bg-subtle"
                           : "text-white/80 hover:text-white hover:bg-white/10"
                       }`}
@@ -136,7 +137,7 @@ export function Navbar() {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger
                     className={`bg-transparent text-sm font-medium transition-colors ${
-                      isScrolled
+                      useDarkText
                         ? "text-text-secondary hover:text-text-primary hover:bg-bg-subtle"
                         : "text-white/80 hover:text-white hover:bg-white/10"
                     }`}
@@ -170,7 +171,7 @@ export function Navbar() {
             <Link
               href="#login"
               className={`text-sm font-medium transition-colors ${
-                isScrolled
+                useDarkText
                   ? "text-text-secondary hover:text-text-primary"
                   : "text-white/80 hover:text-white"
               }`}
@@ -179,7 +180,7 @@ export function Navbar() {
             </Link>
             <Button
               className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:-translate-y-px ${
-                isScrolled
+                useDarkText
                   ? "btn-gradient shadow-md hover:shadow-lg"
                   : "bg-white text-brand-primary hover:bg-white/90 shadow-lg"
               }`}
@@ -192,7 +193,7 @@ export function Navbar() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`lg:hidden p-2 rounded-lg transition-colors ${
-              isScrolled
+              useDarkText
                 ? "text-text-primary hover:bg-bg-subtle"
                 : "text-white hover:bg-white/10"
             }`}

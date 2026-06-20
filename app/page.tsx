@@ -14,7 +14,7 @@ import { Footer } from "@/components/sections/footer"
 export default function Home() {
   return (
     <main>
-      <Navbar />
+      <Navbar heroVariant="light" />
       <Hero />
       <SocialProof />
       <Features />
