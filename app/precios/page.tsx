@@ -8,6 +8,7 @@ import { Section } from "@/components/primitives/section"
 import { Reveal } from "@/components/primitives/reveal"
 import { Eyebrow } from "@/components/primitives/eyebrow"
 import { GradientText } from "@/components/primitives/gradient-text"
+import { Fragment } from "react"
 import { Check, Minus } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -148,9 +149,9 @@ export default function PreciosPage() {
               </thead>
               <tbody>
                 {FULL_COMPARISON.map((cat) => (
-                  <>
+                  <Fragment key={cat.category}>
                     {/* Category header */}
-                    <tr key={cat.category}>
+                    <tr>
                       <td
                         colSpan={5}
                         className="pt-6 pb-2 text-xs font-bold uppercase tracking-widest text-[#3F1C66]"
@@ -179,7 +180,7 @@ export default function PreciosPage() {
                         ))}
                       </tr>
                     ))}
-                  </>
+                  </Fragment>
                 ))}
               </tbody>
             </table>
