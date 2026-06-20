@@ -4,36 +4,49 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Libris Brand Colors */
+  /* Marca */
   --brand-primary: #3F1C66;
   --brand-accent: #B12166;
   --brand-gradient: linear-gradient(135deg, #3F1C66 0%, #B12166 100%);
 
-  /* Extended palette */
-  --brand-orange: #E07B39;
-  --brand-green: #16A085;
-  --brand-dark: #1A0E2E;
-
-  /* Backgrounds */
+  /* Fondos */
   --bg-base: #FFFFFF;
   --bg-subtle: #FAF8FC;
   --bg-elevated: #FFFFFF;
   --bg-dark: #1A0E2E;
+  --bg-dark-2: #241241;
 
-  /* Text */
+  /* Texto */
   --text-primary: #1A0E2E;
   --text-secondary: #5C5470;
   --text-muted: #8B85A0;
+  --text-on-dark: #F4F1F9;
+  --text-on-dark-muted: #B9AFD0;
 
-  /* Borders */
+  /* Bordes */
   --border-subtle: #EDE9F2;
   --border-default: #DCD5E5;
+  --border-on-dark: rgba(255, 255, 255, 0.10);
 
-  /* Status */
+  /* Semanticos */
   --success: #16A085;
   --warning: #E0A82E;
+  --danger: #D14343;
 
-  /* shadcn tokens mapped to Libris */
+  /* Sombras */
+  --shadow-sm: 0 1px 2px rgba(26, 14, 46, 0.04);
+  --shadow-md: 0 4px 16px rgba(26, 14, 46, 0.06);
+  --shadow-lg: 0 12px 40px rgba(63, 28, 102, 0.10);
+  --shadow-glow: 0 0 60px rgba(177, 33, 102, 0.25);
+
+  /* Radios */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* shadcn tokens mapeados a Libris */
   --background: #FFFFFF;
   --foreground: #1A0E2E;
   --card: #FFFFFF;
@@ -48,14 +61,14 @@
   --muted-foreground: #8B85A0;
   --accent: #B12166;
   --accent-foreground: #FFFFFF;
-  --destructive: #DC2626;
+  --destructive: #D14343;
   --destructive-foreground: #FFFFFF;
   --border: #EDE9F2;
   --input: #DCD5E5;
   --ring: #3F1C66;
   --radius: 1rem;
 
-  /* Chart colors */
+  /* Chart */
   --chart-1: #3F1C66;
   --chart-2: #B12166;
   --chart-3: #16A085;
@@ -66,6 +79,7 @@
 @theme inline {
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'Geist Mono', monospace;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -85,34 +99,45 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
 
-  /* Custom Libris colors for Tailwind */
+  /* Libris custom colors */
   --color-brand-primary: var(--brand-primary);
   --color-brand-accent: var(--brand-accent);
-  --color-brand-orange: var(--brand-orange);
-  --color-brand-green: var(--brand-green);
-  --color-brand-dark: var(--brand-dark);
   --color-bg-base: var(--bg-base);
   --color-bg-subtle: var(--bg-subtle);
   --color-bg-elevated: var(--bg-elevated);
   --color-bg-dark: var(--bg-dark);
+  --color-bg-dark-2: var(--bg-dark-2);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
+  --color-text-on-dark: var(--text-on-dark);
+  --color-text-on-dark-muted: var(--text-on-dark-muted);
   --color-border-subtle: var(--border-subtle);
   --color-border-default: var(--border-default);
+  --color-border-on-dark: var(--border-on-dark);
   --color-success: var(--success);
   --color-warning: var(--warning);
+  --color-danger: var(--danger);
+
+  /* Sombras */
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-glow: var(--shadow-glow);
+
+  /* Radios */
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: calc(var(--radius) + 8px);
 }
 
 @layer base {
@@ -138,80 +163,53 @@
   color: white;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
-
 .btn-gradient:hover {
   opacity: 0.9;
 }
 
 /* Animated gradient background */
 @keyframes gradient-shift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
-
 .animated-gradient {
   background: linear-gradient(135deg, #3F1C66 0%, #B12166 50%, #3F1C66 100%);
   background-size: 200% 200%;
   animation: gradient-shift 8s ease infinite;
 }
 
-/* Dot pattern background */
+/* Dot pattern */
 .dot-pattern {
-  background-image: radial-gradient(circle, var(--brand-primary) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(63, 28, 102, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.dot-pattern-on-dark {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-/* Grid pattern background */
+/* Grid pattern */
 .grid-pattern {
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(63, 28, 102, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(63, 28, 102, 0.04) 1px, transparent 1px);
   background-size: 80px 80px;
 }
 
-/* Section heading underline */
-.heading-underline::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 2px;
-  background: var(--brand-gradient);
-  margin-top: 12px;
-}
-
-.heading-underline-center::after {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Marquee animation */
+/* Marquee */
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
-
 .animate-marquee {
   animation: marquee 30s linear infinite;
 }
 
-/* Pulse animation for live badge */
+/* Pulse dot */
 @keyframes pulse-dot {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
-
 .animate-pulse-dot {
   animation: pulse-dot 2s ease-in-out infinite;
 }
@@ -225,10 +223,9 @@ html {
 .card-lift {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .card-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px -8px rgba(63, 28, 102, 0.15);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 /* Gradient border */
@@ -236,7 +233,6 @@ html {
   position: relative;
   background: white;
 }
-
 .gradient-border::before {
   content: '';
   position: absolute;
@@ -248,4 +244,16 @@ html {
   mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-pulse-dot,
+  .animated-gradient {
+    animation: none;
+  }
+  .card-lift:hover {
+    transform: none;
+  }
 }
